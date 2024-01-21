@@ -12,9 +12,10 @@ p.setGravity(0,0,-9.8)
 
 # Set plane
 plane_id = p.loadURDF('plane.urdf')
+robot_id = p.loadURDF('body.urdf')
 
 # Bring link in
-p.loadSDF('boxes.sdf')
+p.loadSDF('world.sdf')
 
 # Run simulation for 1000 steps
 n_timesteps = 1000

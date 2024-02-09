@@ -9,7 +9,7 @@ def create_world():
 
     pyrosim.End()
 
-def create_robot():
+def generate_body():
     pyrosim.Start_URDF("body.urdf")
 
     length, width, height = 1, 1, 1
@@ -23,5 +23,20 @@ def create_robot():
     
     pyrosim.End()
 
+def generate_brain():
+    pyrosim.Start_NeuralNetwork("brain.nndf")
+
+    pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso")
+    pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "BackLeg")
+    pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "FrontLeg")
+
+    pyrosim.Send_Motor_Neuron( name = 3 , jointName = "Torso_BackLeg")
+    pyrosim.Send_Motor_Neuron( name = 4 , jointName = "Torso_FrontLeg")
+
+    pyrosim.End()
+
+
+
 create_world()
-create_robot()
+generate_brain()
+generate_body()

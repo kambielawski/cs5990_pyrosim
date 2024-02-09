@@ -17,12 +17,12 @@ class Motor:
         t = np.arange(c.N_TIMESTEPS)
         self.values = self.amplitude * np.sin(self.freq * t + self.phase_offset)
 
-    def get_value(self, t):
+    def get_value(self, desired_angle):
         pyrosim.Set_Motor_For_Joint(
                 bodyIndex = self.robot_id,
                 jointName = self.jointName,
                 controlMode = p.POSITION_CONTROL,
-                targetPosition = self.values[t],
+                targetPosition = desired_angle,
                 maxForce = 50)
-        return self.values[t]
+        return desired_angle
 

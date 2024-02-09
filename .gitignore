@@ -1,1 +1,4 @@
 pyrosim/__pycache__/*
+pyrosim/__pycache__/
+__pycache__
+*.pyc

@@ -45,4 +45,7 @@ class Robot:
     def think(self, t):
         self.nn.Update()
 
-        
+    def get_fitness(self):
+        state_of_link_zero = p.getLinkState(self.id, 0)
+        x_coord_of_link_zero = state_of_link_zero[0][0]
+        return x_coord_of_link_zero

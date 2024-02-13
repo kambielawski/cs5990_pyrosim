@@ -1,5 +1,8 @@
 import os
 
-for i in range(5):
-    os.system('python3 generate.py')
-    os.system('python3 simulate.py')
+from hillclimber import HillClimber
+
+hc = HillClimber(n_generations=20)
+
+hc.evolve()
+hc.parent.evaluate(0)

@@ -11,9 +11,14 @@ from robot import Robot
 import constants as c
 
 class Simulation:
-    def __init__(self):
+    def __init__(self, sim_type='GUI'):
         # Create physics sim client
-        self.physics_client = p.connect(p.GUI)
+        self.sim_type = sim_type
+        if sim_type == 'GUI':
+            self.physics_client = p.connect(p.GUI)
+        else:
+            self.physics_client = p.connect(p.DIRECT)
+        
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
         # Set gravity
@@ -32,4 +37,8 @@ class Simulation:
             self.robot.sense(t)
             self.robot.think(t)
             self.robot.act(t)
-            time.sleep(0.0001)
+            if self.sim_type == 'GUI':
+                time.sleep(0.0001)
+
+        fitness = self.robot.get_fitness()
+        print(f'({fitness})')

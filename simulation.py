@@ -32,4 +32,4 @@ class Simulation:
             self.robot.sense(t)
             self.robot.think(t)
             self.robot.act(t)
-            time.sleep(0.0003)
+            time.sleep(0.0001)
